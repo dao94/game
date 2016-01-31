@@ -1,0 +1,147 @@
+<style type="text/css">
+    .title-required{font-size: 13px;}
+    .star{color: red}
+</style>
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col" ng-controller='ProductCtrl'>
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Cập nhật sản phẩm</h1>
+                </div>
+            </div>
+        </div>
+        <!-- / main header -->
+        <div class="clearfix"></div>
+        <div class="padder artworks-create-page ">
+            <div class="bg-white m-t-md">
+                <div class="panel panel-default">
+                    <form ng-submit="save(listItemById)">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 " style="min-height:250px">
+                                    <input type="hidden" ng-model = 'listItemById.id'>
+                                    <div class="b-a b-2x wrapper-lg color-swatch gray-lighter text-center m-b" style="background:#eee url({{MediaPath + feature_image}}) no-repeat ;min-height:200px;background-size:100% 100%;">
+                                      
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="{{uploadProcessing}}" aria-valuemin="0" aria-valuemax="100"  aria-valuetext="{{uploadProcessing}}%" style="width: {{uploadProcessing}}%;"></div>
+                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-3" ng-repeat="image in list_images">
+                                            <div class="b-a " style="background:#eee url({{MediaPath + image}});background-size:100% 100px;height:70px;overflow:hidden;cursor:pointer" ng-click="setFeatureImage(image)" >
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-md-12">
+                                            <div class="b-a b-dashed" nv-file-drop="" uploader="uploader">
+                                                <div nv-file-over="" uploader="uploader" over-class="another-file-over-class">
+                                                    <input type="file" class="w-full input-uploader-popup" nv-file-select="" uploader="uploader" multiple style="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="alert alert-success m-t-md"><strong>Mẹo</strong>: Những hình ảnh đẹp sẽ mang lại nhiều cảm ứng cho người dùng khi truy cập </div>
+                                </div>
+                                <div class="col-md-8 col-sm-6">
+                                    <h2 class="title-required m-b ng-scope">Những trường <span class="star">(*)</span> yêu cầu nhập đầy đủ!</h2>
+                                    <div class="clearfix"></div>
+                                    <div class="form-group pull-in clearfix">
+                                      <div class="col-sm-6">
+                                        <label>Nhà cung cấp : <span class="star">(*)</span> </label>
+                                        <select class="form-control"
+                                            ng-model="listItemById.provider_id"
+                                            ng-options="value.id as value.name group by value.group for value in provider" >
+                                            <option value="">Chọn nhà cung cấp </option>
+                                        </select>  
+                                      </div>
+                                      <div class="col-sm-6">
+                                        <label>Danh mục : <span class="star">(*)</span></label>
+                                        <select class="form-control"
+                                            ng-model="listItemById.category_id"
+                                            ng-options="value.id as value.name group by value.group for value in category" >
+                                            <option value="">Chọn danh mục :</option>
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group pull-in clearfix">
+                                      <div class="col-sm-6">
+                                        <label class="control-label">Tên sản phẩm : <span class="star">(*)</span></label>
+                                        <input type="text" class="form-control " ng-model="listItemById.name" tabindex="0" aria-required="true" aria-invalid="true" placeholder="Tên sản phẩm">
+                                      </div>
+                                      <div class="col-sm-6">
+                                        <label>Slug :</label>
+                                        <input type="text" class="form-control" ng-model="listItemById.slug"  tabindex="0" aria-required="true" aria-invalid="true"placeholder="Slug">
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group pull-in clearfix">
+                                      <div class="col-sm-6">
+                                        <label class="control-label">Giá :</label>
+                                        <input type="text" class="form-control " ng-model="listItemById.price" tabindex="0" aria-required="true" aria-invalid="true" placeholder="Giá sản phẩm">
+                                      </div>
+                                      <div class="col-sm-6">
+                                        <label>Alt</label>
+                                        <input type="text" class="form-control" ng-model="listItemById.alt"  tabindex="0" aria-required="true" aria-invalid="true"placeholder="alt">
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">Từ khóa :</label>
+                                        <input type="text" class="form-control " ng-model="listItemById.keywords" tabindex="0" aria-required="true" aria-invalid="true" placeholder="Từ khóa">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Mô tả ngắn về sản phẩm <span class="star">(*)</span></label>
+                                        <textarea class="form-control" ng-model="listItemById.description"  rows ="6" placeholder ='Mô tả ngắn về sản phẩm'>
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-md-12">
+                                    <label>Nội dung</label>
+                                    <div lazy-load="textAngular">
+                                        <div text-angular ng-model="listItemById.content" class="btn-groups"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox">
+                                <label class="i-checks">
+                                    <input type="checkbox" checked ng-model="listItemById.status" tabindex="0"> 
+                                    <i></i> Bán chạy
+                                </label>
+                            </div>
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">
+                            <button type="submit" class="btn btn-success" aria-disabled="true" ng-disabled = 'checkLoad'>Cập nhật
+                            </button>
+                        </footer>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / main -->
+</div>
+
+<style>
+canvas {
+    background-color: #f3f3f3;
+    -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    box-shadow: 3px 3px 3px 0 #e3e3e3;
+    border: 1px solid #c3c3c3;
+    height: 100px;
+    margin: 6px 0 0 6px;
+}
+</style>

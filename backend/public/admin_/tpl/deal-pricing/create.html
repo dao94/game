@@ -1,0 +1,210 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="DealPricingCtrl" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col">
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Đăng tin</h1>
+                </div>
+                <!-- <div class="col-sm-6 text-right hidden-xs">
+                    <div class="inline text-left">
+                        <button class="btn btn-success"><i class='fa fa-television'></i> Tải lên sản phẩm</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- / main header -->
+        <div class="clearfix"></div>
+        <div class="padder artworks-create-page ">
+            <div class=" m-t-md">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Thông tin khách hàng</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="hidden" ng-model = 'frm.id'>
+                                            <label>Đơn vị/ KH</label>
+                                            <input type="text"
+                                                   class="form-control "
+                                                   ng-model="frm.to_company"  required
+                                                   tabindex="0"
+                                                   aria-required="true" aria-invalid="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Người nhận</label>
+                                            <input type="text"
+                                                   class="form-control "
+                                                   ng-model="frm.to_name"  required
+                                                   tabindex="0"
+                                                   aria-required="true" aria-invalid="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text"
+                                                   class="form-control "
+                                                   ng-model="frm.to_email"  required
+                                                   tabindex="0"
+                                                   aria-required="true" aria-invalid="true">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Fax</label>
+                                            <input type="text"
+                                                   class="form-control "
+                                                   ng-model="frm.to_fax"  required
+                                                   tabindex="0"
+                                                   aria-required="true" aria-invalid="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ĐT cố định</label>
+                                            <input type="text"
+                                                   class="form-control "
+                                                   ng-model="frm.to_phone"  required
+                                                   tabindex="0"
+                                                   aria-required="true" aria-invalid="true">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>ĐTDD</label>
+                                            <input type="text"
+                                                   class="form-control "
+                                                   ng-model="frm.to_phone2"  required
+                                                   tabindex="0"
+                                                   aria-required="true" aria-invalid="true">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>CC</label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   ng-model="frm.to_cc" required
+                                                   tabindex="0"
+                                                   aria-required="true" aria-invalid="true">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Ngày giao hàng</label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   ng-model="frm.delivery_day" required
+                                                   tabindex="0"
+                                                   aria-required="true" aria-invalid="true">
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    Thông tin sản phẩm
+                    <a class="btn btn-sm btn-success pull-right" ng-click="addCurrentItem()"  ng-if="!stateParams.id"><i class="fa fa-plus"></i></a>
+                    <div class="clearfix"></div>
+                    </div>
+                    <form ng-submit="save(list_current, frm)">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                  <table class="table">
+                                    <tr>
+                                        <th>#</th>
+                                        <th style="width:35%">Hạng mục</th>
+<!--                                         <th>Hình ảnh</th>
+                                         -->                                        
+                                        <th>Đ.vị</th>
+                                        <th>S.lg</th>
+                                        <th>Đơn giá (VND)</th>
+                                        <th>Thành Tiền (VND)</th>
+                                    </tr>
+
+                                    <tr ng-repeat="current in list_current" ng-if ='$stateParams.id'>
+
+
+                                        <td>#</td>
+                                        <td>
+                                            <p>
+                                                <input type="text" 
+                                                    ng-model="current.product_name" class="form-control"
+                                                    placeholder="Nhập tên sản phẩm" value="" 
+                                                />
+                                            </p>
+                                            <p><textarea name="" id="" ng-model="current.description" class="form-control" placeholder="Mô tả sản phẩm"></textarea></p>
+                                        </td>
+                                        <!-- <td>
+                                            <input type="file">
+                                        </td> -->
+                                        <td>
+                                            <input type="text" ng-model="current.unit" class="form-control" placeholder="Phi, Thùng">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="current.quantity" placeholder="Số lượng" ng-change="updateField('quantity', current)">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="current.price"  placeholder="Đơn giá" formatnumber ng-change="updateField('price', current)">
+                                        </td>
+
+                                        <td>
+                                            <p style="display:none">{{current.total_price = current.total_price || current.quantity * current.price}}</p>
+                                            <input type="text" class="form-control" ng-model = 'current.total_price' formatnumber disabled>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr ng-repeat="current in list_current" ng-if="!stateParams.id">
+                                        <td>#</td>
+                                        <td>
+                                            <p>
+                                                <input type="text" 
+                                                    ng-model="current.product_name" class="form-control"
+                                                    placeholder="Nhập tên sản phẩm"
+                                                />
+                                            </p>
+                                            <p><textarea name="" id="" ng-model="current.description" class="form-control" placeholder="Mô tả sản phẩm"></textarea></p>
+                                        </td>
+                                        <!-- <td>
+                                            <input type="file">
+                                        </td> -->
+                                        <td>
+                                            <input type="text" ng-model="current.unit" class="form-control" placeholder="Phi, Thùng">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="current.quantity" placeholder="Số lượng" ng-change="updateField('quantity', current)">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="current.price"  placeholder="Đơn giá" formatnumber ng-change="updateField('price', current)">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="current.total_price" placeholder="Thành tiền" disabled readonly formatnumber>
+                                        </td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-success pull-right" type="submit" >Lưu lại</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / main -->
+</div>

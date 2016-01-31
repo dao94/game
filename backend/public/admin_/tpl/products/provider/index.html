@@ -1,0 +1,86 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Quản lý nhà cung cấp</h1>
+</div>
+<style type="text/css">
+  .dd-item{cursor: pointer;}
+</style>
+<div class="wrapper-md" ng-controller="providerController">
+  <form class="form-horizontal" >
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-default fade-in-up">
+          <div class="panel-heading font-bold">Nhà cung cấp</div>
+          <div class="panel-body">
+              <p style="text-align:center;margin-top:20px" ng-hide = 'checkLoad'>
+                <i class="fa fa-spinner fa-pulse" style="font-size:20px"></i>
+              </p>
+              <p style="position:absolute;top:100px;right:200px;z-index:9" ng-hide = 'checkf'>
+                <i class="fa fa-spinner fa-pulse" style="font-size:25px"></i>
+              </p>
+              <div ng-nestable ng-model="items" >
+  					    <div ng-mousedown = 'func($item)'>
+  					        {{$item.name}}
+  					    </div>
+					    </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="col-sm-6">
+          <div class="panel panel-default fade-in-up">
+            <div class="panel-heading font-bold">Nhà cung cấp</div>
+            <div class="panel-body">
+                <p style="text-align:center;margin-top:20px" ng-hide = 'checkLoadForm'>
+                  <i class="fa fa-spinner fa-pulse" style="font-size:20px"></i>
+                </p>
+                <div class="div" ng-if='checkLoadForm'>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label" for="input-id-1">Nhà cung cấp cha :</label>
+                    <input type="hidden" value="{{category.id}}" ng-model = 'category.id'>
+                    <div class="col-sm-8 ">
+                      <select class="form-control" ng-model = 'category.parent_key' ng-disabled = '!checkf'>
+                        <option value="">Chọn nhà cung cấp cha</option>
+                      	<option ng-repeat = 'item in items' value="{{item.item.id}}">{{item.item.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label" for="input-id-1">Tiêu đề :</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control ng-pristine ng-valid ng-touched" id="input-id-1" ng-model="category.name" tabindex="0" aria-invalid="false" placeholder = 'Nhập tiêu đề' ng-disabled = '!checkf'>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label" for="input-id-1">Thứ tự :</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control ng-pristine ng-valid ng-touched" id="input-id-1" ng-model="category.ordinal" tabindex="0" aria-invalid="false" placeholder="Nhập thứ tự hiển thị" ng-disabled = '!checkf'>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label" for="input-id-1">Trạng thái :</label>
+                    <div class="col-sm-8 ">
+                      <label class="i-switch m-t-xs m-r">
+                        <input type="checkbox" checked="" ng-model = 'category.active'>
+                        <i></i>
+                      </label>
+                    </div>
+                  </div>
+                <div class="clearfix"></div>
+        		    <div class="form-group">
+        		      <div class=" pull-right m-r-lg" >
+        		        <button type="submit" class="btn btn-default">Hủy</button>
+                    <button type="submit" ng-click= 'add(category)' ng-disabled ='checkSubmit || !checkf' class="btn btn-primary">lưu lại</button>
+                    <button type="submit" ng-click= 'del()' ng-disabled ='checkSubmit || !checkf' class="btn btn-danger">Xóa</button>
+                    <i class="fa fa-spin fa-spinner {{checkSubmit ? 'show inline' : 'hide'}}" id="spin"></i>
+        		      </div>
+        		    </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

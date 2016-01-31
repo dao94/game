@@ -1,0 +1,86 @@
+<!-- list -->
+<ul class="nav">
+  <li>
+    <a ui-sref="app.dashboard" class="auto">      
+      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+      <span class="font-bold" >Tổng quan</span>
+    </a>
+  </li>
+
+  <li ui-sref-active="active" class="active">
+      <a ui-sref="app.account">
+        <i class="glyphicon glyphicon-th-large icon text-success"></i>
+        <span class="font-bold" >Tài khoản</span>
+      </a>
+  </li>
+
+  <li ui-sref-active="active">
+    <a ui-sref="app.page">
+      <i class="glyphicon glyphicon-file icon text-success"></i>
+      <span class="font-bold" >Trang</span>
+    </a>
+  </li>
+
+   <li>
+      <a class="auto">
+          <span class="pull-right text-muted">
+              <i class="fa fa-fw fa-angle-right text"></i>
+              <i class="fa fa-fw fa-angle-down text-active"></i>
+          </span>
+              <i class="fa fa-newspaper-o icon text-success"></i>
+          <span class="font-bold">Tin tức</span>
+      </a>
+      <ul class="nav nav-sub dk">
+          <li ui-sref-active="active" >
+              <a ui-sref="app.news" >
+                <span>Quản lý tin tức</span>
+              </a>
+          </li>
+
+          <li ui-sref-active="active" >
+              <a ui-sref="app.news_categories">
+                <span>Chuyên mục tin</span>
+              </a>
+          </li>
+      </ul>
+    </li>
+
+    <li ui-sref-active="active" class="active">
+        <a ui-sref="app.account_edit">
+          <i class="glyphicon glyphicon-briefcase icon text-success"></i>
+          <span class = 'font-bold'>Thông tin cá nhân</span>
+        </a>
+    </li>
+
+   <li>
+      <a class="auto">
+          <span class="pull-right text-muted">
+              <i class="fa fa-fw fa-angle-right text"></i>
+              <i class="fa fa-fw fa-angle-down text-active"></i>
+          </span>
+              <i class="fa fa-gear icon text-success"></i>
+          <span class="font-bold">Cấu hình</span>
+      </a>
+      <ul class="nav nav-sub dk">
+          <li ui-sref-active="active">
+              <a ui-sref="app.slide">
+                <span>Slide</span>
+              </a>
+          </li>
+
+          <li ui-sref-active="active" class="active">
+              <a ui-sref="app.settings">
+                <span>Cấu hình trang</span>
+              </a>
+          </li>
+
+      </ul>
+  </li>
+  <!-- <li>
+    <a ui-sref="app.profile">
+      <i class="icon-user icon text-success-lter"></i>
+      <span translate="aside.nav.your_stuff.PROFILE">Profile</span>
+    </a>
+  </li> -->
+</ul>
+<!-- / list -->

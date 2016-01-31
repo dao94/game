@@ -1,0 +1,21 @@
+<form data-ng-submit="insert()">
+    <div class="modal-header">
+        <div class="col-md-10">
+            <h4 class="modal-title"><span class="glyphicon glyphicon-picture"></span> Upload Image</h4>
+        </div>
+        <div class="col-md-2 right">
+            <a class="close" href data-ng-click="$dismiss()"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+        <div class="cleafix"></div>
+    </div>
+    <div class="modal-body">
+        <input type="file" class="w-full input-uploader-popup" nv-file-select="" uploader="uploader" multiple />
+        <img ng-src="{{image}}" alt="" >
+        <progressbar data-ng-show="uploadProcessing > 0 && uploadProcessing < 100" class="progress-striped active" value="uploadProcessing"></progressbar>
+    </div>
+    <div class="modal-footer center clearfix">
+        <button data-ng-click="$dismiss()" type="button" class="btn btn-default pull-left">Hủy</button>
+        <button type="submit" data-ng-disabled="image == null || image == ''" class="btn btn-primary pull-right">Chèn vào bài</button>
+        <button type="button" ng-click="upload()" class="btn btn-primary pull-right" ng-disabled="uploadProcessing > 0"><span class="glyphicon glyphicon-picture mR5" ></span>Tải lên</button>
+    </div>
+</form>

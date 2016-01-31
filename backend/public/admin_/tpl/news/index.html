@@ -1,0 +1,101 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col" ng-controller='NewsCtrl'>
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Tin tức</h1>
+                </div>
+                <div class="col-sm-6 text-right hidden-xs">
+                    <div class="inline text-left">
+                        <a class="btn btn-success" ui-sref="app.news_create"><i class='fa fa-edit'></i> Đăng tin tức</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / main header -->
+        <div class="clearfix"></div>
+        <div class="padder collection-page">
+            <div class="panel panel-default m-t-md">
+
+                <div class="table-responsive">
+                    <div  class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- <div class="dataTables_length" >
+                                    <label>Hiển thị 
+                                    <select class="form-control input-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> bản ghi
+                                    </label>
+                                </div> -->
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <div id="DataTables_Table_3_filter" class="dataTables_filter"><label>Tìm kiếm: <input
+                                        type="search" class="form-control " ></label></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-striped b-t b-b dataTable no-footer" id="DataTables_Table_3" role="grid"
+                                       aria-describedby="DataTables_Table_3_info" >
+                                    <thead>
+                                    <tr role="row">
+                                        <th>Tiêu đề
+                                        </th>
+                                        <th>Từ khóa
+                                        </th>
+                                        <th>Mô tả
+                                        </th>
+                                        <th>Chuyên mục
+                                        </th>
+                                        <th>Ngày tạo
+                                        </th>
+                                        <th>Hành động
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr role="row" ng-repeat="item in list_data">
+
+                                            <td class="" style="min-width:200px;"><a ng-click="$state.go('app.news_edit', {slug: item.slug, id: item.id})"><span class="text-info-lter">{{item.name}}</span></a></td>
+                                            <td class="">{{item.keywords}}</td>
+                                            <td class="" style="max-width:500px;">{{item.description}}</td>
+                                            <td>{{item.group_news.name}}</td>
+                                            <td>{{item.create_time}}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-success" ng-click="$state.go('app.news_edit', {slug: item.slug, id: item.id})"><i class="fa fa-edit"></i> Cập nhật</button> &nbsp;
+                                                <button class="btn btn-sm btn-default" ng-disabled="removeProcess" ng-click="remove(item)"><i class="fa fa-trash"></i> Xóa</button>
+                                            </td>
+                                        </tr>
+                                        <tr ng-if="pageLoading">
+                                          <td colspan="5" class="text-center"><i class="fa fa-spinner fa-spin fa-stack-2x"></i></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_3_paginate">
+                                    <pagination class="pull-right" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages" ng-click="loadPage()"></pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / main -->
+</div>

@@ -1,0 +1,92 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3"><i class="fa fa-edit"></i> Quản lý danh mục tin tức</h1>
+</div>
+<div class="wrapper-md" ng-controller="NewsCategoriesCtrl">
+  <form class="form-horizontal" method="get" ng-submit = 'save(category)'>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-default fade-in-up" >
+          <div class="panel-heading font-bold">Danh mục</div>
+          <div class="panel-body">
+              <table class="table table-hover">
+                <tr>
+                  <th>#</th>
+                  <th>Tên chuyên mục</th>
+                  <th>Slug</th>
+                  <th>Trạng thái</th>
+                  <th>Hành động</th>
+                </tr>
+                <tr ng-repeat="item in list_categories">
+                  <td>{{$index + 1}}</td>
+                  <td><a href="javascript:;" class="text-info" ng-click="selectCategory(item)">{{item.name}}</a></td>
+                  <td>{{item.slug}}</td>
+                  <td>
+                    <label class="i-switch m-t-xs m-r">
+                      <input type="checkbox" checked="" ng-model='item.active' ng-true-value="1" ng-false-value="2"> 
+                      <i></i>
+                    </label>
+                  </td>
+                  <td>
+                    <a href="javascript:;" ng-click="remove(item)"><i class="fa fa-trash"></i></a>
+                  </td>
+                </tr>
+                <tr ng-if="loading_state">
+                  <td colspan="5" class="text-center"><i class="fa fa-spinner fa-spin fa-stack-2x"></i></td>
+                </tr>
+
+              </table>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="col-sm-6">
+          <!-- <p style="text-align:center;margin-top:100px" ng-hide = 'checkLoad'>
+            <i class="fa fa-spinner fa-pulse" style="font-size:40px"></i>
+          </p> -->
+          <div class="panel panel-default fade-in-up" >
+            <div class="panel-heading font-bold">Thêm chuyên mục</div>
+            <div class="panel-body">
+
+                <div class="clearfix"></div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-id-1">Tiêu đề :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control ng-pristine ng-valid ng-touched" id="input-id-1" ng-model="category.name" tabindex="0" aria-invalid="false" placeholder = 'Nhập tiêu đề'>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-id-1">Slug :</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control ng-pristine ng-valid ng-touched" id="input-id-1" ng-model="category.slug" tabindex="0" aria-invalid="false" placeholder="Nhập slug">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-id-1">Trạng thái :</label>
+                  <div class="col-sm-8 ">
+                    <label class="i-switch m-t-xs m-r">
+                      <input type="checkbox" checked="" ng-model='category.active' ng-true-value="1" ng-false-value="2"> 
+                      <i></i>
+                    </label>
+                  </div>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+		    <div class="form-group">
+		      <div class=" pull-right m-r-lg" >
+		        <button type="clear" class="btn btn-default" ng-click="selectCategory({})">Hủy</button>
+		        <button type="submit" class="btn btn-primary" ng-disabled="saveLoading">Cập nhật</button>
+		      </div>
+		    </div>
+        </div>
+
+    	
+
+      </div>
+    </div>
+    
+  </form>
+</div>

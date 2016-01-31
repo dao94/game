@@ -1,0 +1,71 @@
+<style type="text/css">
+    .title-required{font-size: 13px;}
+    .star{color: red}
+</style>
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col" ng-controller='pageController'>
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Thêm trang mới</h1>
+                </div>
+            </div>
+        </div>
+        <!-- / main header -->
+        <div class="clearfix"></div>
+        <div class="padder artworks-create-page ">
+            <div class="bg-white m-t-md">
+                <div class="panel panel-default">
+                    <form ng-submit="add(intro)">
+                        <div class="panel-body">
+                            <div class="form-group pull-in clearfix">
+                              <div class="col-sm-6">
+                                <label class="control-label">Tên : <span class="star">(*)</span></label>
+                                <input type="hidden" ng-model = 'intro.id'>
+                                <input type="text" class="form-control " ng-model="intro.name" tabindex="0" aria-required="true" aria-invalid="true">
+                              </div>
+                            </div>
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-md-12">
+                                    <label>Nội dung</label>
+                                    <div lazy-load="textAngular">
+                                        <div text-angular ng-model="intro.content" class="btn-groups"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox">
+                                <label class="i-checks">
+                                    <input type="checkbox" checked ng-model="intro.status" tabindex="0"> 
+                                    <i></i> Hiển thị
+                                </label>
+                            </div>
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">
+                            <button type="submit" class="btn btn-success" aria-disabled="true" ng-disabled = 'checkLoad'>Cập nhật
+                            </button>
+                        </footer>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / main -->
+</div>
+
+<style>
+canvas {
+    background-color: #f3f3f3;
+    -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    box-shadow: 3px 3px 3px 0 #e3e3e3;
+    border: 1px solid #c3c3c3;
+    height: 100px;
+    margin: 6px 0 0 6px;
+}
+</style>

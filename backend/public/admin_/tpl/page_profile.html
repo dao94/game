@@ -1,0 +1,166 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Cấu hình tài khoản cá nhân</h1>
+</div>
+<div class="wrapper-md" ng-controller="profileController">
+  <form class="form-horizontal" method="get" ng-submit = 'update(user)'>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading font-bold">Thông tin cá nhân</div>
+          <div class="panel-body">
+              <input type="hidden" ng-model = 'user.id' value="{{user.id}}">
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Họ tên :</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" ng-model = 'user.fullname' placeholder="Hãy nhập tên của bạn ">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Số điện thoại :</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" ng-model = 'user.phone' placeholder="Hãy nhập số điện thoại của bạn.">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Email :</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="text" placeholder="{{user.email}}" disabled>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Tỉnh/Thành :</label>
+                <div class="col-sm-9">
+                  <select name="city" class="form-control m-b" ng-change="selectcity()" ng-options="option.city_name for option in citys track by option.id" ng-model="user.city">
+                    <option value="">Chọn tỉnh thành</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Quận/Huyện :</label>
+                <div class="col-sm-9">
+                  <select name="district" class="form-control m-b" ng-options="dis.district_name for dis in district track by dis.id" ng-model="user.city" >
+                    <option value="">Chọn quận huyện</option>
+                  </select>
+                </div>
+              </div>
+              
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label" for="input-id-1">Tuổi :</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="input-id-1" ng-model = 'user.age' placeholder="Hãy nhập tuổi của bạn.">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Địa chỉ :</label>
+                <div class="col-sm-9">
+                  <input type="text"  class="form-control" ng-model = 'user.adress' placeholder="Địa chỉ ..">
+                </div>
+              </div>  
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Avatar :</label>
+                <div class="col-sm-9">
+                  <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                </div>
+              </div> 
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Mô tả :</label>
+                <div class="col-sm-9">
+                    <textarea type="text" ng-model="user.description" class="form-control ng-pristine ng-valid ng-valid-required" required="" style="" placeholder="Mô tả ..."></textarea>
+                </div>
+              </div>                
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Ngày sinh :</label>
+                <div class="col-sm-9" ng-controller="DatepickerDemoCtrl">
+                  <div class="input-group w-md">
+                    <input type="text" class="form-control" string-to-timestamp datepicker-popup="{{format}}" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-model="user.date" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Giới tính :</label>
+                <div class="col-sm-9">
+                  <div class="radio">
+                    <label class="i-checks">
+                      <input type="radio" ng-model="user.sex" value="male" ng-checked ='true'>
+                      <i></i>
+                      Name
+                    </label>
+                  </div>
+
+                  <div class="radio">
+                    <label class="i-checks">
+                      <input type="radio" ng-model="user.sex" value="female">
+                      <i></i>
+                      Nữ
+                    </label>
+                  </div>
+
+                  <div class="radio">
+                    <label class="i-checks">
+                      <input type="radio" ng-model="user.sex" value="unknow">
+                      <i></i>
+                      Không xác định
+                    </label>
+                  </div>
+                </div>
+              </div>     
+
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading font-bold">Đổi mật khẩu</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-id-1">Mật khẩu hiện tại :</label>
+                  <div class="col-sm-8 ">
+                    <input type="password" class="form-control ng-pristine ng-valid ng-touched" id="input-id-1" ng-model="user.password" tabindex="0" aria-invalid="false"
+                    placeholder = 'Mật khẩu hiện tại'>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-id-1">Mật khẩu mới :</label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control ng-pristine ng-valid ng-touched" id="input-id-1" ng-model="user.password_new" tabindex="0" aria-invalid="false" placeholder = 'Nhập mật khẩu mới'>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-id-1">Nhập lại mật khẩu mới :</label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control ng-pristine ng-valid ng-touched" id="input-id-1" ng-model="user.password_verify" tabindex="0" aria-invalid="false" placeholder="Nhập lại mật khẩu mới">
+                  </div>
+                </div>
+                <div ng-show="frmUser.password_verify.$error.match" class="ng-hide">Passwords do not match!</div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group">
+      <div class="col-sm-4 pul-left">
+        <button type="submit" class="btn btn-default">Hủy</button>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>

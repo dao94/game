@@ -1,0 +1,39 @@
+/* 
+	Defined color 
+ */
+#Menu{
+	background: url("style/bg_menu.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#main-content-left .defaultTitle{
+
+	background: url("style/bg_menu.png") repeat scroll 0 0 rgba(0, 0, 0, 0)!important;
+}
+.ProductDetails a{
+	color:#333!important;
+}
+#Footer a{
+	color: white!important;
+}
+#Footer .footer-info ul li span{
+	color: white!important;
+	font-size: 15px;	
+}
+#Footer{
+	padding-top:0px;
+    background: #1B273D;
+    color: white!important;
+    font-size: 17px!important;
+    line-height: 20px;
+}
+.box-footer{
+	font-size: 13px;
+	color: white;
+}
+#FooterContainer p{
+	font-size: 13px;
+	color: white;
+}
+
+.newsLastest_Image {
+	overflow: hidden;
+}

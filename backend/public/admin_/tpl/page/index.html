@@ -1,0 +1,72 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col" ng-controller='pageController'>
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Trang
+                </div>
+                <div class="col-sm-6 text-right hidden-xs">
+                    <div class="inline text-left">
+                        <a class="btn btn-success" ui-sref="app.page_create"><i class='fa fa-television'></i> 
+                        Thêm trang mới</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / main header -->
+        <div class="clearfix"></div>
+        <div class="padder collection-page">
+            <div class="panel panel-default m-t-md">
+                <div class="table-responsive">
+                    <div  class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p style="text-align:center;margin-top:20px" ng-hide = '!checkLoad'>
+                                    <i class="fa fa-spinner fa-pulse" style="font-size:25px"></i>
+                                </p>
+                                <table class="table table-striped b-t b-b dataTable no-footer fade-in" id="DataTables_Table_3" role="grid"
+                                       aria-describedby="DataTables_Table_3_info" ng-if ='!checkLoad'>
+                                    <thead>
+                                    <tr role="row">
+                                        <th>ID</th>
+                                        <th>Tên</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Trạng thái</th>
+                                        <th>Sửa</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    	<tr ng-repeat = 'item in items'>
+	                                    	<td>{{item.id}}</td>
+	                                        <td>{{item.name}}</td>
+	                                        <td>{{item.create_time}}</td>
+	                                        <td>    
+                                                <label class="i-switch m-t-xs m-r">
+                                                    <input type="checkbox" checked ng-if='item.status == 1'  ng-click = 'change(item.status,item.id)'>
+                                                    <input type="checkbox" ng-if='item.status == 2'  ng-click = 'change(item.status,item.id)'>
+                                                    <i></i>
+                                                </label>
+                                            </td>
+	                                        <td style="width:120px">
+	                                            <a ui-sref='app.page_update({id: item.id})' class="btn btn-sm btn-success"><i class="fa fa-edit"></i>
+	                                            </a>   
+                                                <!-- <a class="btn btn-sm btn-danger" ng-click="del(item)"><i class="glyphicon glyphicon-remove"></i>
+                                                </a> -->
+	                                        </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / main -->
+</div>

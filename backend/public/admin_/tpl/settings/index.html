@@ -1,0 +1,180 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col" ng-controller='SettingsCtrl'>
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Cấu hình website</h1>
+                </div>
+            </div>
+        </div>
+        <!-- / main header -->
+        <div class="clearfix"></div>
+        <div class="padder collection-page">
+            <div class="panel panel-default m-t-md ">
+                <div class="col-md-8 " style="padding-top:15px;padding-bottom:15px;">
+                
+                <form name="myForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="name">Tên website :</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="data.site_name" id="name" class="form-control" ng-keyup="keyPress('site_name', event=$event)">
+                        </div>
+                    </div>
+
+                    
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Thẻ description (SEO) :</label>
+                        <div class="col-sm-9">
+                            <textarea name="des" ng-model="data.tag_description" id="des" cols="30" rows="4" class="form-control" ng-keyup="keyPress('tag_description', event=$event)"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Thẻ keyword (SEO) :</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="data.tag_keyword" id="name" class="form-control" ng-keyup="keyPress('tag_keyword', event=$event)">
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Tùy chỉnh thẻ header (SEO) :</label>
+                        <div class="col-sm-9">
+                            <textarea name="des" ng-model="data.tag_header" id="des" cols="30" rows="4" class="form-control" ng-keyup="keyPress('tag_header', event=$event)"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Banner :</label>
+                        <div class="col-sm-9">
+                            <img src="{{MediaPath + data.banner}}" ng-if="data.banner">
+                            <input type="file" nv-file-select="" uploader="uploader_banner" />
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Quảng cáo :</label>
+                        <div class="col-sm-9">
+                            <img src="{{MediaPath + data.logo}}" ng-if="data.logo">
+                            <input type="file" nv-file-select="" uploader="uploader_logo" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Video giới thiệu :</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="data.video_promotion" id="name" class="form-control" ng-keyup="keyPress('video_promotion', event=$event)">
+                            <small>Nhập id của video trên youtube, ví dụ : https://www.youtube.com/watch?v=<strong class="text-danger">FVBKvwAeRZk</strong></small>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Số điện thoại liên hệ :</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="data.phone_contact" id="name" class="form-control" ng-keyup="keyPress('phone_contact', event=$event)">
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Email nhận thông tin liên hệ :</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="data.email_notice" id="name" class="form-control" ng-keyup="keyPress('email_notice', event=$event)">
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Thông tin liên hệ :</label>
+                        <div class="col-sm-9">
+                            <div text-angular ng-model="data.contact_information" class="btn-groups" ng-keyup="keyPress('contact_information', event=$event)"></div>  
+                         </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Nội dụng gửi email báo giá:</label>
+                        <small><strong>{email} : </strong>Email người nhận , <strong>{name} : </strong>Tên người nhận, <strong>{link} : </strong>Đường dẫn link báo giá </small>
+                        <div class="col-sm-9">
+                            <div text-angular ng-model="data.email_deal" class="btn-groups" ng-keyup="keyPress('email_deal', event=$event)"></div>  
+                         </div>
+                    </div>
+    
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Địa chỉ :</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="data.phone_contact" id="name" class="form-control" ng-keyup="keyPress('phone_contact', event=$event)">
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Facebook Fanpage :</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="data.fanpage_code" id="name" class="form-control" ng-keyup="keyPress('fanpage_code', event=$event)">
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Google Maps :</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="data.google_maps_link" id="name" class="form-control" ng-keyup="keyPress('google_maps_link', event=$event)">
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="des">Tài khoản gửi thư :</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="data.email_sender_id" id="name" class="form-control" ng-keyup="keyPress('email_sender_id', event=$event)">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="password" ng-model="data.email_sender_password" id="pa" class="form-control" ng-keyup="keyPress('email_sender_password', event=$event)">
+                        </div>
+                    </div>
+
+                   
+                    <div class="clearfix"></div>
+
+                    <div class="pull-right">
+                        <input ng-click="postSave()" ng-disabled="saveProcessing" class="btn btn-primary " type="button" ng-disabled="myForm.name.$invalid" value="Lưu thay đổi">
+                    </div>
+                </form>
+                <div id="facebookG" ng-if="loading">
+                    <div id="blockG_1" class="facebook_blockG" >
+                    </div>
+                    <div id="blockG_2" class="facebook_blockG">
+                    </div>
+                    <div id="   blockG_3" class="facebook_blockG">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- / main -->
+</div>
+
+<style type="text/css">
+    .form-group{
+        overflow: hidden;
+    }
+</style>
